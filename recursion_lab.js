@@ -101,6 +101,17 @@ console.log(range(17,20));
 // tripleStep(5); //returns 13
 // tripleStep(10); //returns 274
 // ```
+const tripleStep = n => {
+    if(n === 1 || n === 0) return 1;
+    else if(n === 2) return 2;
+    else {
+        return tripleStep(n-3) + tripleStep(n-2) + tripleStep(n-1);
+    }
+}
+console.log(tripleStep(3)); //returns 4
+console.log(tripleStep(4)); //returns 7
+console.log(tripleStep(5)); //returns 13
+console.log(tripleStep(10)); //returns 274
 
 // Source: Cracking the Coding Interview
 
@@ -117,7 +128,22 @@ console.log(range(17,20));
 // coinCombos(25); //returns 13
 // coinCombos(60); //returns 73
 // ```
-
+const coinCombos = (n, start = 0) => {
+    let coinTypes = [1,5,10,25]
+    let numCoins = 0;
+    if(n === 0) return 1;
+    else if(n < 0) return 0;
+    else{
+        for(let i = start; i < coinTypes.length; i++){
+            numCoins += coinCombos(n - coinTypes[i], i);
+        }
+        return numCoins;
+    }
+}
+console.log(coinCombos(5));  //returns 2
+console.log(coinCombos(10)); //returns 4
+console.log(coinCombos(25)); //returns 13
+console.log(coinCombos(60)); //returns 73
 // Source: CTCI
 
 // # Resources
