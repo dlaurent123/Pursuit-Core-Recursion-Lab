@@ -12,10 +12,11 @@
 // ```
 
 const sumUpToNum = num => {
-    if(num === 1) return 1
+    if(num <= 0) return 0;
+    if(num === 1) return 1;
     return num + sumUpToNum(num-1);
 }
-console.log(sumUpToNum(7))
+console.log(sumUpToNum(-5))
 
 // - ### Multiply array
 
@@ -42,13 +43,14 @@ console.log(multArr([1,2,3,4]));
 // concatArr(['or', 'just', 'the', 'end', 'of', 'time']); //returns 'or just the end of time'
 // ```
 const concatArr = arr => {
+    if(arr.length === 0) return "array is empty";
     if(arr.length <= 1) return arr[0];
     let el = arr.pop();
     return `${concatArr(arr)} ${el}`;
 }
 console.log(concatArr(['is', 'it', 'tomorrow']));
 console.log(concatArr(['or', 'just', 'the', 'end', 'of', 'time']));
-// console.log(concatArr([]));
+console.log(concatArr([]));
 
 
 // - ### Sum evens
